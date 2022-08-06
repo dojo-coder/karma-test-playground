@@ -5,25 +5,28 @@ describe('EmployeeForm.vue', function() {
   let wrapper;
   let nameInput;
   let emailInput;
+  let form;
   
   beforeEach(function() {
     wrapper = shallowMount(EmployeeForm);
     nameInput = wrapper.find('input:first-of-type');
     emailInput = wrapper.find('input:last-of-type');
+    form = wrapper.find('form');
   });
 
-
-  it('should display error message if required fields are not filled', () => {
+  it('should display error message if required fields are not filled', async () => {
+    await form.trigger('submit');
     const errorMessage = wrapper.find('.error-message');
-    expect(errorMessage).to.exist;
+    expect(errorMessage.wrapperElement).to.exist;
   });
 
   it('should display success message if inputs are filled correctly', async () => {
     await nameInput.setValue('John Davros');
     await emailInput.setValue('johndavros@gmail.com');
+    await form.trigger('submit');
 
     const successMessage = wrapper.find('.success-message');
-    expect(successMessage).to.exist;
+    expect(successMessage.wrapperElement).to.exist;
   });
 
 });
