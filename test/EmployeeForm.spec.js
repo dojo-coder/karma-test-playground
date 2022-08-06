@@ -14,13 +14,13 @@ describe('EmployeeForm.vue', function() {
     form = wrapper.find('form');
   });
 
-  it('should display error message if required fields are not filled', async () => {
+  it('should display error message if required fields are not filled when submitting form', async () => {
     await form.trigger('submit');
     const errorMessage = wrapper.find('.error-message');
     expect(errorMessage.wrapperElement).to.exist;
   });
 
-  it('should display success message if inputs are filled correctly', async () => {
+  it('should display success message if inputs are filled correctly when submitting form', async () => {
     await nameInput.setValue('John Davros');
     await emailInput.setValue('johndavros@gmail.com');
     await form.trigger('submit');

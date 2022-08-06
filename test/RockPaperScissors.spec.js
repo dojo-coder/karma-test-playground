@@ -16,10 +16,8 @@ describe('RockPaperScisssors.vue', function() {
     paperPlayerBtn = wrapper.find('button:nth-child(2)');
     scissorsPlayerBtn = wrapper.find('button:nth-child(3)');
     score = wrapper.find('h1');
-
     playerPick = wrapper.find('.players i:first-of-type');
     computerPick = wrapper.find('.players i:last-of-type');
-
   });
 
   it('should render the component correctly', function() {
@@ -27,7 +25,6 @@ describe('RockPaperScisssors.vue', function() {
     assert.matchSnapshot(wrapper.element);
   });
 
-  // should show the correct initial score
   it('displays the initial game score', () => {
     expect(score.text()).to.equal('0 - 0');
   });
